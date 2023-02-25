@@ -1,0 +1,13 @@
+all: run1 run2 run3 run4
+
+run1:
+	./HousePainterRun1
+
+run2:
+	./HousePainterRun2
+
+run3:
+	./HousePainterRun3
+
+run4:
+	./HousePainterRun4
