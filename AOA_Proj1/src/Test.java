@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class Test {
-    //随机生成house的startdday和endday，并且储存在一个二维数组中
+    //Randomly generate the startdday and endday of the house and store them in a two-dimensional array
     public static int[][] GenerateInputData(int houseNumber, int endDay){
         int[][] res = new int[houseNumber][2];
         Random random = new Random();
@@ -23,7 +23,7 @@ public class Test {
 
 
     public static void main(String[] args) {
-        int[][] data = Test.GenerateInputData(3000,5000);/*这里输入args[0]，args[1]*/
+        int[][] data = Test.GenerateInputData(3000,5000);
         String filename = "src/input.txt";
         int n = 5000;
         int m = data.length;
@@ -32,8 +32,8 @@ public class Test {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             bufferedWriter.write(n + " "+ m);
-            bufferedWriter.newLine();// 换行
-            // 写入input.txt中
+            bufferedWriter.newLine();
+            // write into input.txt中
             for (int[] datum : data) {
                 int num1 = datum[0];
                 int num2 = datum[1];
@@ -42,10 +42,10 @@ public class Test {
             }
 
             bufferedWriter.close();
-            System.out.println("写入成功！");
+            System.out.println("success！");
 
         } catch (IOException e) {
-            System.out.println("写入文件时出现错误！");
+            System.out.println("fail to write into file!");
             e.printStackTrace();
         }
 

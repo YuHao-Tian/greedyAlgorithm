@@ -25,25 +25,25 @@ public class HousePainter {
 
     //paint the house that started being available the latest
     public static ArrayList<Integer> HousePainterRun2(int maxWorkDays, int[][] houses) {
-        //维护一个空pq，用来存储所有available房子,对于STRAT2，以 houses[][0] 降序排序
+        //Maintain an empty pq to store all available houses, for STRAT2, sort in descending order of houses[][0]
         PriorityQueue<int[]> avaiHouse = new PriorityQueue<>((o1, o2) -> o2[0] - o1[0]);
-        ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);   //维护一个Arraylist用来储存house的index，也就是output
-        int point = 0; //指针，用来遍历houses
+        ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);
+        int point = 0; //Pointer, used to traverse houses
         for (int day = 1; day <= maxWorkDays; day++) {
             if (point == houses.length && avaiHouse.isEmpty()) {
                 break;
             }
-            //把所有startday <= currentday的house放进avaiHouse中去
+            //Put all startday <= currentday houses into avaiHouse
             while (point < houses.length && houses[point][0] <= day) {
                 avaiHouse.offer(houses[point]);
                 point++;
             }
 
-            //判断堆顶的endday是否大于等于day，如果不是就poll掉。
+            //Determine whether the endday at the top of the heap is greater than or equal to day, and if not, poll it.
             while (!avaiHouse.isEmpty() && avaiHouse.peek()[1] < day) {
                 avaiHouse.poll();
             }
-            //如果是，取出即为结果
+            //Take out is the result
             if (!avaiHouse.isEmpty()) {
                 paintedHouse.add(avaiHouse.poll()[2] + 1);
             }
@@ -51,26 +51,27 @@ public class HousePainter {
         return paintedHouse;
     }
 
+    //paint the house that is available for the shortest duration
     public static ArrayList<Integer> HousePainterRun3(int maxWorkDays, int[][] houses) {
-        //维护一个空pq，用来存储所有available房子,对于STRAT3，以duration 升序排序
+        //Maintain an empty pq to store all available houses, for STRAT3, sort in ascending order of houses[][1]-houses[][0]
         PriorityQueue<int[]> avaiHouse = new PriorityQueue<>(Comparator.comparingInt(o -> (o[1] - o[0])));
-        ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);   //维护一个Arraylist用来储存house的index，也就是output
-        int point = 0; //指针，用来遍历houses
+        ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);
+        int point = 0; //Pointer, used to traverse houses
         for (int day = 1; day <= maxWorkDays; day++) {
             if (point == houses.length && avaiHouse.isEmpty()) {
                 break;
             }
-            //把所有startday <= currentday的house放进avaiHouse中去
+            //Put all startday <= currentday houses into avaiHouse
             while (point < houses.length && houses[point][0] <= day) {
                 avaiHouse.offer(houses[point]);
                 point++;
             }
 
-            //判断堆顶的endday是否大于等于day，如果不是就poll掉。
+            //Determine whether the endday at the top of the heap is greater than or equal to day, and if not, poll it.
             while (!avaiHouse.isEmpty() && avaiHouse.peek()[1] < day) {
                 avaiHouse.poll();
             }
-            //如果是，取出即为结果
+            //Take out is the result
             if (!avaiHouse.isEmpty()) {
                 paintedHouse.add(avaiHouse.poll()[2] + 1);
             }
@@ -78,26 +79,27 @@ public class HousePainter {
         return paintedHouse;
     }
 
+    //paint the house that will stop being available the earliest
     public static ArrayList<Integer> HousePainterRun4(int maxWorkDays, int[][] houses) {
-        //维护一个空pq，用来存储所有available房子,对于STRAT4，以 houses[][1] 升序排序
+        //Maintain an empty pq to store all available houses, for STRAT3, sort in ascending order of houses[][1]
         PriorityQueue<int[]> avaiHouse = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
         ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);   //维护一个Arraylist用来储存house的index，也就是output
-        int point = 0; //指针，用来遍历houses
+        int point = 0; //Pointer, used to traverse houses
         for (int day = 1; day <= maxWorkDays; day++) {
             if (point == houses.length && avaiHouse.isEmpty()) {
                 break;
             }
-            //把所有startday <= currentday的house放进avaiHouse中去
+            //Put all startday <= currentday houses into avaiHouse
             while (point < houses.length && houses[point][0] <= day) {
                 avaiHouse.offer(houses[point]);
                 point++;
             }
 
-            //判断堆顶的endday是否大于等于day，如果不是就poll掉。
+            //Determine whether the endday at the top of the heap is greater than or equal to day, and if not, poll it.
             while (!avaiHouse.isEmpty() && avaiHouse.peek()[1] < day) {
                 avaiHouse.poll();
             }
-            //如果是，取出即为结果
+            //Take out is the result
             if (!avaiHouse.isEmpty()) {
                 paintedHouse.add(avaiHouse.poll()[2] + 1);
             }
@@ -105,10 +107,7 @@ public class HousePainter {
         return paintedHouse;
     }
 
-      /*   public static int HousePainterRunOptimal(int n,int[][] arr) {
-
-    }*/
-
+    // use for store the n and int[][]
     public static class InputData {
         public int n;
         public int[][] houses;
@@ -119,7 +118,7 @@ public class HousePainter {
         }
     }
 
-    //read data自用
+    //use for read data from file.txt
     public static InputData ReadInputData(String inputFile) {
         try {
             File newFile = new File(inputFile);
