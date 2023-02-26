@@ -23,9 +23,9 @@ public class Test {
 
 
     public static void main(String[] args) {
-        int[][] data = Test.GenerateInputData(3000,5000);
+        int[][] data = Test.GenerateInputData(10,10);
         String filename = "src/input.txt";
-        int n = 5000;
+        int n = 10;
         int m = data.length;
         try {
             FileWriter fileWriter = new FileWriter(filename);

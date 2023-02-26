@@ -141,21 +141,30 @@ public class HousePainter {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-       // System.out.println("Please enter the absolute path of the data");
-       // String s = scan.nextLine();
-        InputData newData = HousePainter.ReadInputData("src/input.txt");
-       // InputData newData = HousePainter.ReadInputData(s);
+        System.out.println("Please enter the absolute path of the data");
+        String s = scan.nextLine();
+        //InputData newData = HousePainter.ReadInputData("src/input.txt");
+        InputData newData = HousePainter.ReadInputData(s);
         assert newData != null;
-        ArrayList<Integer> list = HousePainter.HousePainterRun4(newData.n, newData.houses);
+        ArrayList<Integer> list = new ArrayList<>();
+        switch (args[0]) {
+            case "1" -> list = HousePainter.HousePainterRun1(newData.n, newData.houses);
+            case "2" -> list = HousePainter.HousePainterRun2(newData.n, newData.houses);
+            case "3" -> list = HousePainter.HousePainterRun3(newData.n, newData.houses);
+            case "4" -> list = HousePainter.HousePainterRun4(newData.n, newData.houses);
+            default -> System.out.println("your input is illegal");
+        }
+       // ArrayList<Integer> list = HousePainter.HousePainterRun1(newData.n, newData.houses);
         System.out.println("the output is:");
-        System.out.println(list.size());
-/*        for (int i = 0; i < list.size(); i++) {
+        //System.out.println(list.size());
+        for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i));
             if (i != list.size() - 1) {
                 System.out.print(" ");
             }
-        }*/
+
+        }
+
     }
 
 }
-
