@@ -11,7 +11,7 @@ public class HousePainter {
         for (int day = 1; day <= maxWorkDays; day++) {
             while (index < houses.length && day >= houses[index][0]) {
                 if (day <= houses[index][1]) {
-                    paintedHouse.add(index + 2);//这里+2方便看，后面删掉
+                    paintedHouse.add(index + 1);//这里+2方便看，后面删掉
                     index++;
                     break;
                 } else {
@@ -30,7 +30,7 @@ public class HousePainter {
         ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);   //维护一个Arraylist用来储存house的index，也就是output
         int point = 0; //指针，用来遍历houses
         for (int day = 1; day <= maxWorkDays; day++) {
-            if (point == houses.length) {
+            if (point == houses.length && avaiHouse.isEmpty()) {
                 break;
             }
             //把所有startday <= currentday的house放进avaiHouse中去
@@ -45,7 +45,7 @@ public class HousePainter {
             }
             //如果是，取出即为结果
             if (!avaiHouse.isEmpty()) {
-                paintedHouse.add(avaiHouse.poll()[2] + 2);//这里+2方便看，后面删掉
+                paintedHouse.add(avaiHouse.poll()[2] + 1);//这里+2方便看，后面删掉
             }
         }
         return paintedHouse;
@@ -57,7 +57,7 @@ public class HousePainter {
         ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);   //维护一个Arraylist用来储存house的index，也就是output
         int point = 0; //指针，用来遍历houses
         for (int day = 1; day <= maxWorkDays; day++) {
-            if (point == houses.length) {
+            if (point == houses.length && avaiHouse.isEmpty()) {
                 break;
             }
             //把所有startday <= currentday的house放进avaiHouse中去
@@ -72,7 +72,7 @@ public class HousePainter {
             }
             //如果是，取出即为结果
             if (!avaiHouse.isEmpty()) {
-                paintedHouse.add(avaiHouse.poll()[2] + 2);//这里+2方便看，后面删掉
+                paintedHouse.add(avaiHouse.poll()[2] + 1);//这里+2方便看，后面删掉
             }
         }
         return paintedHouse;
@@ -84,7 +84,7 @@ public class HousePainter {
         ArrayList<Integer> paintedHouse = new ArrayList<>(houses.length);   //维护一个Arraylist用来储存house的index，也就是output
         int point = 0; //指针，用来遍历houses
         for (int day = 1; day <= maxWorkDays; day++) {
-            if (point == houses.length) {
+            if (point == houses.length && avaiHouse.isEmpty()) {
                 break;
             }
             //把所有startday <= currentday的house放进avaiHouse中去
@@ -99,7 +99,7 @@ public class HousePainter {
             }
             //如果是，取出即为结果
             if (!avaiHouse.isEmpty()) {
-                paintedHouse.add(avaiHouse.poll()[2] + 2);//这里+2方便看，后面删掉
+                paintedHouse.add(avaiHouse.poll()[2] + 1);//这里+2方便看，后面删掉
             }
         }
         return paintedHouse;
@@ -119,7 +119,7 @@ public class HousePainter {
         }
     }
 
-    //read data
+    //read data自用
     public static InputData ReadInputData(String inputFile) {
         try {
             File newFile = new File(inputFile);
@@ -140,11 +140,15 @@ public class HousePainter {
         }
     }
 
-
     public static void main(String[] args) {
-        InputData newData = HousePainter.ReadInputData("src/input.txt");
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the absolute path of the data");
+        String s = scan.nextLine();
+        //InputData newData = HousePainter.ReadInputData("src/input.txt");
+        InputData newData = HousePainter.ReadInputData(s);
         assert newData != null;
-        ArrayList<Integer> list = HousePainter.HousePainterRun3(newData.n, newData.houses);
+        ArrayList<Integer> list = HousePainter.HousePainterRun1(newData.n, newData.houses);
+        System.out.println("the output is:");
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i));
             if (i != list.size() - 1) {
