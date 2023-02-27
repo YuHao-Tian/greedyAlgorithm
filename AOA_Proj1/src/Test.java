@@ -21,6 +21,38 @@ public class Test {
         return res;
     }
 
+    /*    // use for store the n and int[][]
+    public static class InputData {
+        public int n;
+        public int[][] houses;
+
+        public InputData(int n, int[][] houses) {
+            this.n = n;
+            this.houses = houses;
+        }
+    }
+
+    //use for read data from file.txt
+    public static InputData ReadInputData(String inputFile) {
+        try {
+            File newFile = new File(inputFile);
+            Scanner scanner = new Scanner(newFile);
+            int n = scanner.nextInt();
+            int m = scanner.nextInt();
+            int[][] houses = new int[m][3];
+            for (int i = 0; i < m; i++) {
+                houses[i][0] = scanner.nextInt();
+                houses[i][1] = scanner.nextInt();
+                houses[i][2] = i;
+            }
+            scanner.close();
+            return new InputData(n, houses);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+            return null;
+        }
+    }*/
+
 
     public static void main(String[] args) {
         int[][] data = Test.GenerateInputData(10,10);
@@ -56,7 +88,35 @@ public class Test {
     }
 }
 
+/*        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("please input the data");
+        // read the first line with n and m
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        int[][] arrs = new int[m][3];
+        // read the m lines with start and end dates
+        for (int i = 0; i < m; i++) {
+            int start = scanner.nextInt();
+            int end = scanner.nextInt();
+            arrs[i][0] = start;
+            arrs[i][1] = end;
+            arrs[i][2] = i + 1;
+
+        }
+        for (int[] arr : arrs) {
+            System.out.println(Arrays.toString(arr));
+        }
+        ArrayList<Integer> list = HousePainter.HousePainterRun1(n, arrs);
+        System.out.println("the output is:");
+        //System.out.println(list.size());
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i));
+            if (i != list.size() - 1) {
+                System.out.print(" ");
+            }
+            scanner.close();
+        }*/
 
 
 
