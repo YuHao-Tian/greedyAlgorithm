@@ -148,13 +148,23 @@ public class HousePainter {
         assert newData != null;
         ArrayList<Integer> list = new ArrayList<>();
         switch (args[0]) {
-            case "1" -> list = HousePainter.HousePainterRun1(newData.n, newData.houses);
-            case "2" -> list = HousePainter.HousePainterRun2(newData.n, newData.houses);
-            case "3" -> list = HousePainter.HousePainterRun3(newData.n, newData.houses);
-            case "4" -> list = HousePainter.HousePainterRun4(newData.n, newData.houses);
-            default -> System.out.println("your input is illegal");
+            case "1":
+                list = HousePainter.HousePainterRun1(newData.n, newData.houses);
+                break;
+            case "2":
+                list = HousePainter.HousePainterRun2(newData.n, newData.houses);
+                break;
+            case "3":
+                list = HousePainter.HousePainterRun3(newData.n, newData.houses);
+                break;
+            case "4":
+                list = HousePainter.HousePainterRun4(newData.n, newData.houses);
+                break;
+            default:
+                System.out.println("your input is illegal");
+                break;
         }
-       // ArrayList<Integer> list = HousePainter.HousePainterRun1(newData.n, newData.houses);
+        // ArrayList<Integer> list = HousePainter.HousePainterRun1(newData.n, newData.houses);
         System.out.println("the output is:");
         //System.out.println(list.size());
         for (int i = 0; i < list.size(); i++) {
